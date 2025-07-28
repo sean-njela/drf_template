@@ -198,3 +198,11 @@ cython_debug/
 .DS_Store
 .AppleDouble
 .LSOverride
+
+.env
+.venv
+
+.devbox
+
+
+devbox.d/*
