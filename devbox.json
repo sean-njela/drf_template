@@ -1,35 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.15.0/.schema/devbox.schema.json",
-  "packages": [
-    "python@3.13",
-    "poetry@2.1",
-    "redis",
-    "gcc",
-    "libffi",
-    "libpq",
-    "openssl",
-    "zlib",
-    "jupyter",
-    "python313Packages.flake8@latest"
-  ],
+  "packages": ["python@3.13", "poetry@2.1", "go-task@3.44", "httpie@3.2"],
   "shell": {
     "init_hook": [
-      "echo '✅ Devbox Django environment ready!'",
+      "source ~/.aliases",
       "poetry lock",
       "poetry install || echo 'Poetry install failed/skipped'",
       "poetry run create_dev_env || echo 'create_dev_env failed/skipped'"
     ],
-    "scripts": {
-      "venv": ["source .venv/bin/activate"],
-      "compose-up": [
-        "docker compose -f .devcontainer/docker-compose.yml up -d db redis"
-      ],
-      "compose-down": [
-        "docker compose -f .devcontainer/docker-compose.yml down"
-      ],
-      "migrate": [
-        "poetry run python manage.py migrate || echo 'Migrations failed/skipped'"
-      ]
-    }
+    "scripts": {}
   }
 }

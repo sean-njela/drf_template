@@ -92,6 +92,7 @@ INSTALLED_APPS = [
     # local apps
     "apps.users",
     "apps.core",
+    "apps.ntier_simple_example",
 ]
 
 MIDDLEWARE = [

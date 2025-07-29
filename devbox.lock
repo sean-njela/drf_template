@@ -1,94 +1,119 @@
 {
   "lockfile_version": "1",
   "packages": {
-    "gcc": {
-      "resolved": "github:NixOS/nixpkgs/6027c30c8e9810896b92429f0092f624f7b1aace?narHash=sha256-cnL5WWn%2FxkZoyH%2F03NNUS7QgW5vI7D1i74g48qplCvg%3D#gcc",
-      "source": "nixpkg",
-      "systems": {
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "path": "/nix/store/7nlf5v84s4p2yhx327j8495yik60qnzh-gcc-wrapper-14.3.0",
-              "default": true
-            },
-            {
-              "name": "man",
-              "path": "/nix/store/iw5vfsg3xs5rrsc8h9zxj429s87a1giz-gcc-wrapper-14.3.0-man",
-              "default": true
-            }
-          ]
-        }
-      }
-    },
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
-      "last_modified": "2025-07-25T08:26:56Z",
-      "resolved": "github:NixOS/nixpkgs/6027c30c8e9810896b92429f0092f624f7b1aace?lastModified=1753432016&narHash=sha256-cnL5WWn%2FxkZoyH%2F03NNUS7QgW5vI7D1i74g48qplCvg%3D"
+      "last_modified": "2025-07-28T17:09:23Z",
+      "resolved": "github:NixOS/nixpkgs/648f70160c03151bc2121d179291337ad6bc564b?lastModified=1753722563&narHash=sha256-FK8iq76wlacriq3u0kFCehsRYTAqjA9nfprpiSWRWIc%3D"
     },
-    "jupyter": {
-      "resolved": "github:NixOS/nixpkgs/6027c30c8e9810896b92429f0092f624f7b1aace?narHash=sha256-cnL5WWn%2FxkZoyH%2F03NNUS7QgW5vI7D1i74g48qplCvg%3D#jupyter",
-      "source": "nixpkg",
+    "go-task@3.44": {
+      "last_modified": "2025-07-13T22:45:35Z",
+      "resolved": "github:NixOS/nixpkgs/a421ac6595024edcfbb1ef950a3712b89161c359#go-task",
+      "source": "devbox-search",
+      "version": "3.44.0",
       "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/xf4c3z2n3g8j41bh9s0l2pjv4fahdmab-go-task-3.44.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/xf4c3z2n3g8j41bh9s0l2pjv4fahdmab-go-task-3.44.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/hziv622f7xw9swigq3ylw1lj49dgr4d2-go-task-3.44.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/hziv622f7xw9swigq3ylw1lj49dgr4d2-go-task-3.44.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/aafqxhbxvy73v1gpwnnc8bs5icm6nlcg-go-task-3.44.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/aafqxhbxvy73v1gpwnnc8bs5icm6nlcg-go-task-3.44.0"
+        },
         "x86_64-linux": {
           "outputs": [
             {
-              "name": "env",
-              "path": "/nix/store/kdlr5jf27kyvlmdacyl9vf9byzagswqm-python3-3.13.5-env",
+              "name": "out",
+              "path": "/nix/store/yvpnz39r66qr57m41c3dfyc3b7mi8y9i-go-task-3.44.0",
               "default": true
             }
-          ]
+          ],
+          "store_path": "/nix/store/yvpnz39r66qr57m41c3dfyc3b7mi8y9i-go-task-3.44.0"
         }
       }
     },
-    "libffi": {
-      "resolved": "github:NixOS/nixpkgs/6027c30c8e9810896b92429f0092f624f7b1aace?narHash=sha256-cnL5WWn%2FxkZoyH%2F03NNUS7QgW5vI7D1i74g48qplCvg%3D#libffi",
-      "source": "nixpkg",
+    "httpie@3.2": {
+      "last_modified": "2025-07-13T22:45:35Z",
+      "resolved": "github:NixOS/nixpkgs/a421ac6595024edcfbb1ef950a3712b89161c359#httpie",
+      "source": "devbox-search",
+      "version": "3.2.4",
       "systems": {
-        "x86_64-linux": {
+        "aarch64-darwin": {
           "outputs": [
             {
-              "name": "man",
-              "path": "/nix/store/jclvh3zi2nidxmzvr67pn1srvdblar8n-libffi-3.4.8-man",
+              "name": "out",
+              "path": "/nix/store/arby8djv17g9hzjr4il2rwygjr7g59li-python3.13-httpie-3.2.4",
               "default": true
             },
             {
-              "path": "/nix/store/v4vqyvb5gq799b1v3qf5lyyij7pnjfiz-libffi-3.4.8",
-              "default": true
+              "name": "dist",
+              "path": "/nix/store/lva1ll0jya79gb6ddcpmkfcj5kpk71ak-python3.13-httpie-3.2.4-dist"
             }
-          ]
-        }
-      }
-    },
-    "libpq": {
-      "resolved": "github:NixOS/nixpkgs/6027c30c8e9810896b92429f0092f624f7b1aace?narHash=sha256-cnL5WWn%2FxkZoyH%2F03NNUS7QgW5vI7D1i74g48qplCvg%3D#libpq",
-      "source": "nixpkg",
-      "systems": {
-        "x86_64-linux": {
+          ],
+          "store_path": "/nix/store/arby8djv17g9hzjr4il2rwygjr7g59li-python3.13-httpie-3.2.4"
+        },
+        "aarch64-linux": {
           "outputs": [
             {
-              "path": "/nix/store/3w4dqb47wldjiqrz9r3rb8afm7szawry-libpq-17.5",
-              "default": true
-            }
-          ]
-        }
-      }
-    },
-    "openssl": {
-      "resolved": "github:NixOS/nixpkgs/6027c30c8e9810896b92429f0092f624f7b1aace?narHash=sha256-cnL5WWn%2FxkZoyH%2F03NNUS7QgW5vI7D1i74g48qplCvg%3D#openssl",
-      "source": "nixpkg",
-      "systems": {
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "man",
-              "path": "/nix/store/x713vmzf9pqcskp600j69rdc0j338k3s-openssl-3.5.1-man",
+              "name": "out",
+              "path": "/nix/store/4z0isj6l2j7drr16crzz12yak166qd67-python3.13-httpie-3.2.4",
               "default": true
             },
             {
-              "name": "bin",
-              "path": "/nix/store/x9h21yvdf2sz1wfa5g3ppd0g8c7jcga9-openssl-3.5.1-bin",
-              "default": true
+              "name": "dist",
+              "path": "/nix/store/n1dry9d87ncrlk915lkalka4laqrsav5-python3.13-httpie-3.2.4-dist"
             }
-          ]
+          ],
+          "store_path": "/nix/store/4z0isj6l2j7drr16crzz12yak166qd67-python3.13-httpie-3.2.4"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lsq15h8f6jcmnkik5rx7zlc23i5hv3dh-python3.13-httpie-3.2.4",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/y7rm3xi07i5f9mrw90fw6kwk7m2yd6qa-python3.13-httpie-3.2.4-dist"
+            }
+          ],
+          "store_path": "/nix/store/lsq15h8f6jcmnkik5rx7zlc23i5hv3dh-python3.13-httpie-3.2.4"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/q5lc0ngm8bql48irvdfw51l3gyik7np9-python3.13-httpie-3.2.4",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/b7pgzhhhmi8slz2akb5r75cc3vf0hk6c-python3.13-httpie-3.2.4-dist"
+            }
+          ],
+          "store_path": "/nix/store/q5lc0ngm8bql48irvdfw51l3gyik7np9-python3.13-httpie-3.2.4"
         }
       }
     },
@@ -157,70 +182,6 @@
         }
       }
     },
-    "python313Packages.flake8@latest": {
-      "last_modified": "2025-07-13T22:45:35Z",
-      "resolved": "github:NixOS/nixpkgs/a421ac6595024edcfbb1ef950a3712b89161c359#python313Packages.flake8",
-      "source": "devbox-search",
-      "version": "7.3.0",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/gpyayx7g6rnsgf0hamzc4mgmaxvrqsn9-python3.13-flake8-7.3.0",
-              "default": true
-            },
-            {
-              "name": "dist",
-              "path": "/nix/store/qvjdw05h43sm9v1d7173xmi76wlbb4sq-python3.13-flake8-7.3.0-dist"
-            }
-          ],
-          "store_path": "/nix/store/gpyayx7g6rnsgf0hamzc4mgmaxvrqsn9-python3.13-flake8-7.3.0"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/rbd8kjmccj7kvy4pv4j6c8nxqhxhs63c-python3.13-flake8-7.3.0",
-              "default": true
-            },
-            {
-              "name": "dist",
-              "path": "/nix/store/58ia82pplinscdw63lhr0gibgrbw9vdp-python3.13-flake8-7.3.0-dist"
-            }
-          ],
-          "store_path": "/nix/store/rbd8kjmccj7kvy4pv4j6c8nxqhxhs63c-python3.13-flake8-7.3.0"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/m1xasafd2q9h1bim044gwiq7h2sqk5cw-python3.13-flake8-7.3.0",
-              "default": true
-            },
-            {
-              "name": "dist",
-              "path": "/nix/store/a9s22y974nll1kwi52cyz45bdm2lpj8j-python3.13-flake8-7.3.0-dist"
-            }
-          ],
-          "store_path": "/nix/store/m1xasafd2q9h1bim044gwiq7h2sqk5cw-python3.13-flake8-7.3.0"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/xgfiij4hsnmxw49z4p4vk4pj134na4n7-python3.13-flake8-7.3.0",
-              "default": true
-            },
-            {
-              "name": "dist",
-              "path": "/nix/store/k5hip9fahf3pwqnjgf179m9rdqg7dmik-python3.13-flake8-7.3.0-dist"
-            }
-          ],
-          "store_path": "/nix/store/xgfiij4hsnmxw49z4p4vk4pj134na4n7-python3.13-flake8-7.3.0"
-        }
-      }
-    },
     "python@3.13": {
       "last_modified": "2025-05-16T20:19:48Z",
       "plugin_version": "0.0.4",
@@ -275,35 +236,6 @@
             }
           ],
           "store_path": "/nix/store/2mab9iiwhcqwk75qwvp3zv0bvbiaq6cs-python3-3.13.3"
-        }
-      }
-    },
-    "redis": {
-      "plugin_version": "0.0.2",
-      "resolved": "github:NixOS/nixpkgs/6027c30c8e9810896b92429f0092f624f7b1aace?narHash=sha256-cnL5WWn%2FxkZoyH%2F03NNUS7QgW5vI7D1i74g48qplCvg%3D#redis",
-      "source": "nixpkg",
-      "systems": {
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "path": "/nix/store/mzvzvm4r45k7aisrpjp72riyppap1md7-redis-8.0.3",
-              "default": true
-            }
-          ]
-        }
-      }
-    },
-    "zlib": {
-      "resolved": "github:NixOS/nixpkgs/6027c30c8e9810896b92429f0092f624f7b1aace?narHash=sha256-cnL5WWn%2FxkZoyH%2F03NNUS7QgW5vI7D1i74g48qplCvg%3D#zlib",
-      "source": "nixpkg",
-      "systems": {
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "path": "/nix/store/abch1r0gnbpikbp9n4x6mm8dwqwfrib6-zlib-1.3.1",
-              "default": true
-            }
-          ]
         }
       }
     }

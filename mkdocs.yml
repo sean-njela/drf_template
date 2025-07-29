@@ -1,34 +1,154 @@
-site_name: Django Starter Template
-repo_name: Django Starter Template
-repo_url: https://github.com/wilfredinni/django-starter-template
+site_name: My Docs| Sean Njela
+site_description: Professional DRF template implementation.
+site_url: https://sean-njela.github.io/drf_template/
+site_author: Sean Njela
+repo_url: https://github.com/sean-njela/drf_template/
+repo_name: sean-njela/drf_template/
+edit_uri: edit/main/drf_template/
+copyright: Copyright &copy; 2025 Sean Njela - Personal Portfolio Project
+
+# Configuration
 theme:
   name: material
-  logo: assets/logo.png
-  favicon: assets/logo.png
-  icon:
-    repo: fontawesome/brands/github
+  language: en
+  # favicon: assets/images/argocd.png #must incomment if it exists
+  # logo: assets/images/argocd.png #must incomment if it exists
+  # icon:
+  #   logo: logo
+  # must uncomment when you replace the logo path
   features:
+    - announce.dismiss
+    - content.action.edit
     - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # - content.code.select
+    # - content.footnote.tooltips
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    # - toc.integrate
   palette:
-    # Palette toggle for light mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: red
+      primary: indigo
+      accent: indigo
       toggle:
-        icon: material/brightness-7
+        icon: material/toggle-switch
         name: Switch to dark mode
-
-    # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: red
+      primary: black
+      accent: indigo
       toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+        icon: material/toggle-switch-off
+        name: Switch to system preference
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+  - mike:
+      alias_type: redirect # options: symlink (default), redirect, copy
+      version_selector: true
+
+# Extensions
 markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator:
+        !!python/name:material.extensions.emoji.to_svg # ignore editor warning
+
+      emoji_index:
+        !!python/name:material.extensions.emoji.twemoji # ignore editor warning
+
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.superfences
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format:
+            !!python/name:pymdownx.superfences.fence_code_format # ignore editor warning
+
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify:
+        !!python/object/apply:pymdownx.slugs.slugify # ignore editor warning
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/sean-njela # replace with yours
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/sean-njela # replace with yours
+  generator: false
+  version:
+    provider: mike
+    alias: true
+    default: latest
+  status:
+    new: Recently added
+    deprecated: Deprecated
+
 nav:
   - Home: index.md
   - Development: development.md
@@ -45,7 +165,7 @@ nav:
   - Testing: testing.md
   - Environment Setup: environment_setup.md
   - AI Tools and CLI Agents:
-    - Overview: ai_tools/index.md
-    - Gemini CLI Agent: ai_tools/gemini.md
-    - GitHub Copilot: ai_tools/copilot.md
-    - Roo Code and Cline: ai_tools/cline_roocode.md
+      - Overview: ai_tools/index.md
+      - Gemini CLI Agent: ai_tools/gemini.md
+      - GitHub Copilot: ai_tools/copilot.md
+      - Roo Code and Cline: ai_tools/cline_roocode.md

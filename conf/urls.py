@@ -30,6 +30,7 @@ urlpatterns = [
     path("auth/", include("apps.users.urls")),
     path("core/", include("apps.core.urls")),
     path("", index),
+    path("api/booking/", include("apps.ntier_simple_example.urls")),
 ]
 
 if settings.DEBUG:
