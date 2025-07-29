@@ -1,6 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.15.0/.schema/devbox.schema.json",
-  "packages": ["python@3.13", "poetry@2.1", "go-task@3.44", "httpie@3.2"],
+  "packages": [
+    "python@3.13",
+    "poetry@2.1",
+    "go-task@3.44",
+    "httpie@3.2",
+    "gitflow@1.12"
+  ],
   "shell": {
     "init_hook": [
       "source ~/.aliases",
