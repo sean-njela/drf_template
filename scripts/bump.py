@@ -1,5 +1,5 @@
-import re
 import os
+import re
 
 
 def increment_version(version):
@@ -9,11 +9,13 @@ def increment_version(version):
 
 
 def update_pyproject_version(file_path, new_version):
-    with open(file_path, "r") as file:
+    with open(file_path) as file:
         content = file.read()
 
     updated_content = re.sub(
-        r'version = "\d+\.\d+\.\d+"', f'version = "{new_version}"', content
+        r'version = "\d+\.\d+\.\d+"',
+        f'version = "{new_version}"',
+        content,
     )
 
     with open(file_path, "w") as file:
@@ -21,7 +23,7 @@ def update_pyproject_version(file_path, new_version):
 
 
 def update_urls_version(file_path, new_version):
-    with open(file_path, "r") as file:
+    with open(file_path) as file:
         content = file.read()
 
     updated_content = re.sub(
@@ -39,11 +41,12 @@ def bum_version():
     pyproject_file = os.path.join(base_dir, "pyproject.toml")
     urls_file = os.path.join(base_dir, "conf", "urls.py")
 
-    with open(pyproject_file, "r") as file:
+    with open(pyproject_file) as file:
         pyproject_content = file.read()
 
     current_version = re.search(
-        r'version = "(\d+\.\d+\.\d+)"', pyproject_content
+        r'version = "(\d+\.\d+\.\d+)"',
+        pyproject_content,
     ).group(1)
     new_version = increment_version(current_version)
 

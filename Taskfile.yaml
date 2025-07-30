@@ -79,6 +79,9 @@ tasks:
     desc: "⚙️ Setup environment: install dependencies, generate config etc."
     cmds:
       - docker compose -f .devcontainer/docker-compose.yml up -d db redis
+      - pre-commit autoupdate
+      - pre-commit install
+      - task -t Taskfile.gitflow.yaml sync
 
   # ─── Development Task ────────────────────────────────────────────────────────
   dev:
@@ -119,3 +122,21 @@ tasks:
     desc: "🌐 Serve docs locally -> http://127.0.0.1:8000/"
     cmds:
       - poetry run mkdocs serve --clean
+
+  # ---------------------------------------------------------------
+
+  # # # # # # # ---------- # # # # # # # ---------- # # # # # # #
+  # Misc.
+  # # # # # # # ---------- # # # # # # # ---------- # # # # # # #
+
+  pre-commit:
+    desc: "Run pre-commit hooks"
+    cmds:
+      - pre-commit run --all-files
+
+  clean-cache:
+    desc: "Clean Python cache"
+    cmds:
+      - find . -type d -name "__pycache__" -exec rm -r {} +
+      - find . -name "*.pyc" -delete
+      - rm -rf .pytest_cache

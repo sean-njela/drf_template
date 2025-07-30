@@ -14,11 +14,7 @@ from .schema import (
     PROFILE_PUT_SCHEMA,
     USER_CREATE_RESPONSE_SCHEMA,
 )
-from .serializers import (
-    AuthTokenSerializer,
-    CreateUserSerializer,
-    UserProfileSerializer,
-)
+from .serializers import AuthTokenSerializer, CreateUserSerializer, UserProfileSerializer
 from .throttles import UserLoginRateThrottle
 
 security_logger = logging.getLogger("django.security")
@@ -33,7 +29,8 @@ class LoginView(KnoxLoginView):
 
     def post(self, request, format=None) -> Response:
         serializer = AuthTokenSerializer(
-            data=request.data, context={"request": request}
+            data=request.data,
+            context={"request": request},
         )
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data["user"]
@@ -76,7 +73,9 @@ class CreateUserView(generics.CreateAPIView):
             headers = self.get_success_headers(serializer.data)
             security_logger.info(f"User {serializer.data['email']} created.")
             return Response(
-                serializer.data, status=status.HTTP_201_CREATED, headers=headers
+                serializer.data,
+                status=status.HTTP_201_CREATED,
+                headers=headers,
             )
         except serializers.ValidationError as e:
             security_logger.warning(f"Failed to create user: {e.detail}")

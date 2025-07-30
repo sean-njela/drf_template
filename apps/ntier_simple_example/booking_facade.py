@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 from .services import BookingService
 
 
@@ -8,6 +9,7 @@ class BookingFacade(ABC):
     Ensures that we do not expose the inner workings of the system to external clients.
     It only calls the services and returns the result.
     """
+
     @abstractmethod
     def create_booking(self, user, data):
         """
@@ -52,7 +54,7 @@ class BookingFacade(ABC):
 # Used in another module like this:
 
 # # users/services.py
-# from apps.ntier_simple_example.0-booking_facade import BookingInterface
+# from apps.ntier_simple_example.booking_facade import BookingInterface
 
 # def register_and_book(user_data, property_id, date):
 #     user = create_user(user_data)

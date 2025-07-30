@@ -2,11 +2,7 @@ from drf_spectacular.utils import OpenApiExample, OpenApiResponse
 
 from apps.core.schema import UNAUTHORIZED_EXAMPLES, ErrorResponseSerializer
 
-from .serializers import (
-    CreateUserSerializer,
-    LoginResponseSerializer,
-    UserProfileSerializer,
-)
+from .serializers import CreateUserSerializer, LoginResponseSerializer, UserProfileSerializer
 
 LOGIN_RESPONSE_SCHEMA = {
     200: OpenApiResponse(

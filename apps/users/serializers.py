@@ -1,9 +1,10 @@
+import logging
+
 from django.conf import settings
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
-import logging
 
 from .models import CustomUser
 from .utils import get_errors
@@ -29,7 +30,9 @@ class AuthTokenSerializer(serializers.Serializer):
         # The authenticate call simply returns None for is_active=False users
         if email and password:
             user: CustomUser = authenticate(
-                request=self.context.get("request"), email=email, password=password
+                request=self.context.get("request"),
+                email=email,
+                password=password,
             )
 
             if not user:
@@ -63,13 +66,15 @@ class CreateUserSerializer(serializers.ModelSerializer):
         try:
             validate_password(password, self.Meta.model(**user_data))
         except Exception as e:
-            security_logger.error(f"Password validation error: {type(e)} - {str(e)}")
+            security_logger.error(f"Password validation error: {type(e)} - {e!s}")
             security_logger.error(f"Error details: {e.__dict__}")
             if hasattr(e, "error_list"):
                 errors = get_errors(e)
             else:
                 errors = [
-                    _("An error occurred during password validation. Please try again.")
+                    _(
+                        "An error occurred during password validation. Please try again.",
+                    ),
                 ]
             raise serializers.ValidationError({"password": errors})
 
@@ -81,7 +86,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = CustomUser
         fields = ("email", "password", "first_name", "last_name")
@@ -93,7 +97,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
                 validate_password(data["password"], self.Meta.model(**data))
             except Exception as e:
                 security_logger.error(
-                    f"Password validation error: {type(e)} - {str(e)}"
+                    f"Password validation error: {type(e)} - {e!s}",
                 )
                 security_logger.error(f"Error details: {e.__dict__}")
                 if hasattr(e, "error_list"):

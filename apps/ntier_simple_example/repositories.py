@@ -1,10 +1,14 @@
 # booking/repositories.py
-from .models import Property, Booking
+from __future__ import annotations
+
+from .models import Booking, Property
+
 
 class PropertyRepo:
     """
     Repository for property data.
     """
+
     @staticmethod
     def get_by_id(property_id) -> Property | None:
         """
@@ -21,10 +25,12 @@ class PropertyRepo:
         except Property.DoesNotExist:
             return None
 
+
 class BookingRepo:
     """
     Repository for booking data.
     """
+
     @staticmethod
     def create(user_id, property_id, start_date, end_date, price) -> Booking | None:
         """
@@ -48,5 +54,5 @@ class BookingRepo:
                 end_date=end_date,
                 price=price,
             )
-        except Exception as e:
+        except Exception:
             return None

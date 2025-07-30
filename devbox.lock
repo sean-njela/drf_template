@@ -230,6 +230,70 @@
         }
       }
     },
+    "pre-commit@4.2": {
+      "last_modified": "2025-07-20T07:42:04Z",
+      "resolved": "github:NixOS/nixpkgs/7c688a0875df5a8c28a53fb55ae45e94eae0dddb#pre-commit",
+      "source": "devbox-search",
+      "version": "4.2.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ws5gddr7k95gkassxqii57n2z7nb2n8s-pre-commit-4.2.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/dmyymvjb222shiglwnhs9xkwgjrarnr1-pre-commit-4.2.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/ws5gddr7k95gkassxqii57n2z7nb2n8s-pre-commit-4.2.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mdxaw01j2f6gwavi1wipwk36mnyz2k3c-pre-commit-4.2.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/8705231q4p23javhmlj5rnnsipalf8r3-pre-commit-4.2.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/mdxaw01j2f6gwavi1wipwk36mnyz2k3c-pre-commit-4.2.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/clq5v65b4klg8d7by3wdm0ipq280q4z0-pre-commit-4.2.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/50dn6gmz2gx7nv29if8qxw5ck5wli9xm-pre-commit-4.2.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/clq5v65b4klg8d7by3wdm0ipq280q4z0-pre-commit-4.2.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/p7sqampmkig5c427vmsr2db6s5b3f23j-pre-commit-4.2.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/p5sif6jyhp80qhghk6yjr66xjbpvvgg5-pre-commit-4.2.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/p7sqampmkig5c427vmsr2db6s5b3f23j-pre-commit-4.2.0"
+        }
+      }
+    },
     "python@3.13": {
       "last_modified": "2025-05-16T20:19:48Z",
       "plugin_version": "0.0.4",

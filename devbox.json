@@ -5,7 +5,8 @@
     "poetry@2.1",
     "go-task@3.44",
     "httpie@3.2",
-    "gitflow@1.12"
+    "gitflow@1.12",
+    "pre-commit@4.2"
   ],
   "shell": {
     "init_hook": [
