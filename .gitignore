@@ -206,3 +206,5 @@ cython_debug/
 
 
 devbox.d/*
+
+schema.yaml

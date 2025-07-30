@@ -10,3 +10,7 @@ class BookingRequestSerializer(serializers.Serializer):
     property_id = serializers.IntegerField()
     start_date = serializers.DateField()
     end_date = serializers.DateField()
+
+class BookingResponseSerializer(serializers.Serializer):
+    booking_id = serializers.IntegerField()
+    total_price = serializers.DecimalField(max_digits=10, decimal_places=2)

@@ -54,5 +54,6 @@ class BookingRepo:
                 end_date=end_date,
                 price=price,
             )
-        except Exception:
+        except Exception as e:
+            print("Booking creation failed:", e)
             return None
