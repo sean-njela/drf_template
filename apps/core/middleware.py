@@ -7,7 +7,7 @@ _thread_locals = local()
 
 
 def get_client_ip(request):
-    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+    x_forwarded_for = request.headers.get("x-forwarded-for")
     ip = (
         x_forwarded_for.split(",")[0].strip()
         if x_forwarded_for
@@ -27,8 +27,7 @@ class RequestIDMiddleware:
         _thread_locals.path = request.path
         _thread_locals.user_id = (
             getattr(request.user, "id", None)
-            if hasattr(request.user, "is_authenticated")
-            and request.user.is_authenticated
+            if hasattr(request.user, "is_authenticated") and request.user.is_authenticated
             else None
         )
 

@@ -1,5 +1,5 @@
 # booking/domain.py
-from datetime import datetime
+
 
 class BookingRules:
     """Domain Layer: Core business logic. No Django or DRF."""

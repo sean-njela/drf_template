@@ -1,13 +1,15 @@
 # booking/models.py
-from django.db import models
 from django.contrib.auth import get_user_model
+from django.db import models
 
 User = get_user_model()
+
 
 class Property(models.Model):
     """
     Property model.
     """
+
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="properties")
     title = models.CharField(max_length=255)
     price_per_night = models.DecimalField(max_digits=10, decimal_places=2)
@@ -20,8 +22,13 @@ class Booking(models.Model):
     """
     Booking model.
     """
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
-    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name="reservations")
+    property = models.ForeignKey(
+        Property,
+        on_delete=models.CASCADE,
+        related_name="reservations",
+    )
     start_date = models.DateField()
     end_date = models.DateField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -39,4 +46,3 @@ class Booking(models.Model):
             bool: True if the booking overlaps, False otherwise.
         """
         return not (self.end_date < start_date or self.start_date > end_date)
-

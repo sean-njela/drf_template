@@ -1,8 +1,10 @@
+import logging
+from unittest.mock import patch
+
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from unittest.mock import patch
-import logging
+
 from apps.core.views import PingRateThrottle
 
 
@@ -33,5 +35,6 @@ class CoreViewsTests(APITestCase):
             with self.subTest(method=method):
                 response = getattr(self.client, method)(self.ping_url)
                 self.assertEqual(
-                    response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED
+                    response.status_code,
+                    status.HTTP_405_METHOD_NOT_ALLOWED,
                 )

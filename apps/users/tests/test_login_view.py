@@ -1,10 +1,12 @@
+import logging
+from unittest.mock import ANY, patch
+
+from django.core.cache import cache
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
+
 from apps.users.models import CustomUser as User
-from unittest.mock import patch, ANY
-import logging
-from django.core.cache import cache
 
 
 class LoginViewTests(APITestCase):
@@ -14,7 +16,8 @@ class LoginViewTests(APITestCase):
     def setUpTestData(cls):
         cls.url = reverse("users:knox_login")
         cls.user = User.objects.create_user(
-            email="testuser@example.com", password="testpassword123"
+            email="testuser@example.com",
+            password="testpassword123",
         )
         cls.valid_credentials = {
             "email": "testuser@example.com",
@@ -60,7 +63,7 @@ class LoginViewTests(APITestCase):
                     self.assertEqual(mock_logger.call_count, 2)
                     self.assertEqual(
                         mock_logger.call_args_list[0][0][0],
-                        "Failed login attempt for email: " f"{invalid_data['email']}",
+                        f"Failed login attempt for email: {invalid_data['email']}",
                     )
                     self.assertEqual(
                         mock_logger.call_args_list[1][0],
@@ -92,7 +95,7 @@ class LoginViewTests(APITestCase):
             self.assertEqual(mock_logger.call_count, 2)
             self.assertEqual(
                 mock_logger.call_args_list[0][0][0],
-                "Failed login attempt for email: " f"{self.user.email}",
+                f"Failed login attempt for email: {self.user.email}",
             )
             self.assertEqual(
                 mock_logger.call_args_list[1][0],
@@ -135,7 +138,8 @@ class LoginViewTests(APITestCase):
             with self.subTest(method=method):
                 response = getattr(self.client, method)(self.url)
                 self.assertEqual(
-                    response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED
+                    response.status_code,
+                    status.HTTP_405_METHOD_NOT_ALLOWED,
                 )
                 self.assertIn("POST", response["Allow"])
 

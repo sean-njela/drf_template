@@ -39,6 +39,8 @@ pymdown-extensions = "^10.16"
 mkdocs-mermaid2-plugin = "^1.2.1"
 mike = "^2.1.3"
 mkdocs-minify-plugin = "^0.8.0"
+ruff = "^0.12.7"
+coverage = "^7.10.1"
 
 [tool.poetry.group.dev.dependencies]
 django-debug-toolbar = "^6.0.0"
@@ -53,6 +55,9 @@ black = "^24.4.2"
 flake8 = "^7.0.0"
 isort = "^5.13.2"
 mypy = "^1.10.0"
+mypy-extensions = "^1.1.0"
+djangorestframework-stubs = "^3.16.1"
+django-stubs = {version = "^5.2.2", extras = ["plugin"]}
 
 [tool.poetry.scripts]
 server = "scripts.django:runserver"
@@ -76,7 +81,195 @@ target-version = ["py313"]
 [tool.isort]
 profile = "black"
 line_length = 95
+skip = [
+    "migrations",
+    "tests",
+    "scripts",
+    ".venv",
+    "apps/ntier_simple_example",
+    "apps/users/*",
+    "apps/core/*",
+    "manage.py",
+    "__pycache__",
+]
 
 [tool.flake8]
 max-line-length = 95
-exclude = [".venv", "migrations", "__pycache__"]
+exclude = [
+    ".venv",
+    "migrations",
+    "tests",
+    "scripts",
+    "apps/ntier_simple_example",
+    "apps/users/*",
+    "apps/core/*",
+    "manage.py",
+    "__pycache__",
+]
+
+# ==== mypy ====
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+disallow_incomplete_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+# Use explicit package bases to handle the apps directory structure
+explicit_package_bases = true
+# Add the parent directory to the Python path to handle absolute imports
+mypy_path = "$MYPY_CONFIG_FILE_DIR/.."
+
+# Enable Django plugin with configuration
+plugins = [
+    "mypy_django_plugin.main",
+]
+
+# Configure namespace packages
+namespace_packages = true
+
+[tool.django-stubs]
+django_settings_module = "conf.settings"
+
+# Django migrations should not produce any errors:
+[[tool.mypy.overrides]]
+module = "*.migrations.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "scripts.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "*.management.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "apps.ntier_simple_example.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "apps.users.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "apps.core.*"
+ignore_errors = true
+
+
+
+# ==== Coverage ====
+[tool.coverage.run]
+include = ["apps/**"]
+omit = [
+    "*/migrations/*",
+    "*/tests/*",
+    "scripts/*",
+    "apps/ntier_simple_example",
+    "apps/users/*",
+    "apps/core/*",
+    "manage.py",
+]
+plugins = ["django_coverage_plugin"]
+
+
+[tool.ruff.lint]
+select = [
+    "F",
+    "E",
+    "W",
+    "C90",
+    "I",
+    "N",
+    "UP",
+    "YTT",
+    # "ANN", # flake8-annotations: we should support this in the future but 100+ errors atm
+    "ASYNC",
+    "S",
+    "BLE",
+    "FBT",
+    "B",
+    "A",
+    "COM",
+    "C4",
+    "DTZ",
+    "T10",
+    "DJ",
+    "EM",
+    "EXE",
+    "FA",
+    "ISC",
+    "ICN",
+    "G",
+    "INP",
+    "PIE",
+    "T20",
+    "PYI",
+    "PT",
+    "Q",
+    "RSE",
+    "RET",
+    "SLF",
+    "SLOT",
+    "SIM",
+    "TID",
+    "TC",
+    "INT",
+    # "ARG", # Unused function argument
+    "PTH",
+    "ERA",
+    "PD",
+    "PGH",
+    "PL",
+    "TRY",
+    "FLY",
+    # "NPY",
+    # "AIR",
+    "PERF",
+    # "FURB",
+    # "LOG",
+    "RUF",
+]
+
+ignore = [
+    "S101", # Use of assert detected https://docs.astral.sh/ruff/rules/assert/
+    "RUF012", # Mutable class attributes should be annotated with `typing.ClassVar`
+    "SIM102", # sometimes it's better to nest
+    "UP038", # Checks for uses of isinstance/issubclass that take a tuple
+    "RUF005",
+    # of types for comparison.
+    # Deactivated because it can make the code slow:
+    # https://github.com/astral-sh/ruff/issues/7871
+]
+# The fixes in extend-unsafe-fixes will require
+# provide the `--unsafe-fixes` flag when fixing.
+extend-unsafe-fixes = [
+    "UP038",
+]
+
+[tool.ruff]
+line-length = 95
+exclude = [
+    ".venv",
+    "migrations",
+    "tests",
+    "test_*.py",
+    "*/tests/*",
+    "*/test_*.py",
+    "scripts",
+    "conf/test_settings.py",
+    "apps/ntier_simple_example",
+    "apps/users/*",
+    "apps/core/*",
+    "conf/test_utils.py",
+    "notebook.ipynb",
+    "manage.py",
+]

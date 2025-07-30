@@ -1,9 +1,11 @@
 # booking/views.py
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .serializers import BookingRequestSerializer
 from .services import BookingService
+
 
 class BookingView(APIView):
     """Presentation Layer: handles incoming API requests"""

@@ -1,6 +1,7 @@
 # booking/services.py
-from .repositories import PropertyRepo, BookingRepo
 from .domain import BookingRules
+from .repositories import BookingRepo, PropertyRepo
+
 
 class BookingService:
     """Application Layer: Orchestrates property booking."""

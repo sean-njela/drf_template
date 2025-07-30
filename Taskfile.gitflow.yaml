@@ -105,7 +105,7 @@ tasks:
         # Check for ArgoCD-specific files in remote changes
         ARGOCD_FILES=$(git diff --name-only {{.DEV_BRANCH}} origin/{{.DEV_BRANCH}} | grep -E '\.argocd-source-.*\.yaml$' || echo "")
         if [ -n "$ARGOCD_FILES" ]; then
-          echo "📌 Detected ArgoCD-generated files in remote changes:" 
+          echo "📌 Detected ArgoCD-generated files in remote changes:"
           echo "$ARGOCD_FILES"
         fi
 
@@ -115,7 +115,7 @@ tasks:
         else
           # Branches have diverged - try to merge remote changes
           echo "⚠️ Develop has diverged from remote. Attempting to merge updates..."
-          
+
           # Try to auto-resolve ArgoCD file conflicts by taking remote version
           if [ -n "$ARGOCD_FILES" ]; then
             echo "🔧 Auto-resolving ArgoCD files by taking remote version..."
@@ -124,7 +124,7 @@ tasks:
               git add "$file" 2>/dev/null || true
             done
           fi
-          
+
           git pull --no-edit origin {{.DEV_BRANCH}} || {
             echo "❌ Auto-merge failed. Resolve conflicts manually:"
             echo "   1. Fix conflicts"
@@ -164,7 +164,7 @@ tasks:
         else
           # Branches have diverged - try to merge remote changes
           echo "⚠️ Main has diverged from remote. Attempting to merge main updates..."
-          
+
           # Try to auto-resolve ArgoCD file conflicts by taking remote version
           if [ -n "$ARGOCD_FILES" ]; then
             echo "🔧 Auto-resolving ArgoCD files by taking remote version..."
@@ -173,7 +173,7 @@ tasks:
               git add "$file" 2>/dev/null || true
             done
           fi
-          
+
           git pull --no-edit origin {{.MAIN_BRANCH}} || {
             echo "❌ Auto-merge failed. Resolve conflicts manually:"
             echo "   1. Fix conflicts"

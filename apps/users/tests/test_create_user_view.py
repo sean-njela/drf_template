@@ -1,9 +1,10 @@
+import logging
+from unittest.mock import patch
+
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from django.contrib.auth import get_user_model
-from unittest.mock import patch
-import logging
 
 
 class CreateUserViewTests(APITestCase):
@@ -18,7 +19,8 @@ class CreateUserViewTests(APITestCase):
             "password2": "testpassword123",
         }
         cls.admin_user = get_user_model().objects.create_superuser(
-            email="admin@example.com", password="adminpassword"
+            email="admin@example.com",
+            password="adminpassword",
         )
 
     def test_create_user_success(self):
@@ -28,7 +30,7 @@ class CreateUserViewTests(APITestCase):
             response = self.client.post(self.url, self.user_data, format="json")
             self.assertEqual(response.status_code, status.HTTP_201_CREATED)
             self.assertTrue(
-                get_user_model().objects.filter(email=self.user_data["email"]).exists()
+                get_user_model().objects.filter(email=self.user_data["email"]).exists(),
             )
             mock_logger.assert_called_once()
 
@@ -41,7 +43,8 @@ class CreateUserViewTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn("non_field_errors", response.data)
         self.assertEqual(
-            response.data["non_field_errors"][0], "Passwords do not match."
+            response.data["non_field_errors"][0],
+            "Passwords do not match.",
         )
 
     def test_create_user_weak_password(self):
@@ -108,5 +111,6 @@ class CreateUserViewTests(APITestCase):
             with self.subTest(method=method):
                 response = getattr(self.client, method)(self.url)
                 self.assertEqual(
-                    response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED
+                    response.status_code,
+                    status.HTTP_405_METHOD_NOT_ALLOWED,
                 )

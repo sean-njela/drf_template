@@ -29,8 +29,7 @@ jobs:
         image: redis:latest
         ports:
           - 6379:6379
-        options:
-          --health-cmd "redis-cli ping"
+        options: --health-cmd "redis-cli ping"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -47,6 +46,12 @@ jobs:
       REDIS_URL: redis://localhost:6379/1
 
     steps:
+      - name: Clean Python cache
+        run: |
+          find . -type d -name "__pycache__" -exec rm -r {} +
+          find . -name "*.pyc" -delete
+          rm -rf .pytest_cache
+
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
@@ -72,4 +77,4 @@ jobs:
 
       - name: Run Tests
         run: |
-            poetry run pytest
+          poetry run pytest
