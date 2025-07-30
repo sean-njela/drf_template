@@ -81,6 +81,7 @@ tasks:
       - docker compose -f .devcontainer/docker-compose.yml up -d db redis
       - pre-commit autoupdate
       - pre-commit install
+      #- pnpm install -g @stoplight/prism-cli
       - task -t Taskfile.gitflow.yaml sync
 
   # ─── Development Task ────────────────────────────────────────────────────────
@@ -140,3 +141,8 @@ tasks:
       - find . -type d -name "__pycache__" -exec rm -r {} +
       - find . -name "*.pyc" -delete
       - rm -rf .pytest_cache
+
+  schema:
+    desc: "Generate REST API schema"
+    cmds:
+      - poetry run python manage.py spectacular --format openapi --file schema.yaml

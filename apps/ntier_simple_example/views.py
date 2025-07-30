@@ -1,11 +1,28 @@
 # booking/views.py
+from drf_spectacular.utils import OpenApiExample, OpenApiResponse, extend_schema
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .serializers import BookingRequestSerializer
+from .serializers import BookingRequestSerializer, BookingResponseSerializer
 from .services import BookingService
 
+
+@extend_schema(
+    request=BookingRequestSerializer,
+    responses={
+        201: OpenApiResponse(
+            response=BookingResponseSerializer,
+            description="Successful booking response",
+            examples=[
+                OpenApiExample(
+                    name="Booking Example",
+                    value={"booking_id": 101, "total_price": "850.00"}
+                )
+            ]
+        )
+    }
+)
 
 class BookingView(APIView):
     """Presentation Layer: handles incoming API requests"""
