@@ -1,13 +1,13 @@
 <div align="center">
-    <!-- <img src="https://raw.githubusercontent.com/sean-njela/drf_template/refs/heads/main/static/logo.png" data-canonical-src="/logo.png" width="130" height="130" /> -->
+    <img src="https://raw.githubusercontent.com/sean-njela/drf_template/refs/heads/main/static/logo.png" data-canonical-src="/logo.png" width="130" height="130" />
 
 # DRF starter template
 
 A comprehensive and easy-to-use starting point for your new API with **Django** and **DRF**.
 
-<!-- [![Test Status](https://github.com/sean-njela/drf_template/actions/workflows/test.yml/badge.svg)](https://github.com/sean-njela/drf_template/actions/workflows/test.yml)
+[![Test Status](https://github.com/sean-njela/drf_template/actions/workflows/test.yml/badge.svg)](https://github.com/sean-njela/drf_template/actions/workflows/test.yml)
 [![CodeQL Advanced](https://github.com/sean-njela/drf_template/actions/workflows/codeql.yml/badge.svg)](https://github.com/sean-njela/drf_template/actions/workflows/codeql.yml)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/sean-njela/drf_template?tab=MIT-1-ov-file#readme) -->
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/sean-njela/drf_template?tab=MIT-1-ov-file#readme)
 
 </div>
 
